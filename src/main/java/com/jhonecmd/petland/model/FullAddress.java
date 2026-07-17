@@ -2,9 +2,11 @@ package com.jhonecmd.petland.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
+import lombok.Data;
 
 @Embeddable
-public class Address {
+@Data
+public class FullAddress {
 
     @Column(length = 50)
     private String address;

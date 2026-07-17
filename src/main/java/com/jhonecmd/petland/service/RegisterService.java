@@ -4,6 +4,8 @@ import com.jhonecmd.petland.model.RegisterEntity;
 import com.jhonecmd.petland.repository.RegisterRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class RegisterService {
 
@@ -16,4 +18,5 @@ public class RegisterService {
     public void save(RegisterEntity registerEntity){
         registerRepository.save(registerEntity);
     }
+
 }

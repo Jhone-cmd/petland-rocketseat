@@ -1,11 +1,17 @@
 package com.jhonecmd.petland.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "register")
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class RegisterEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,7 +23,8 @@ public class RegisterEntity {
     @Column(length = 100, nullable = false, unique = true)
     private String email;
 
-    private Address address;
+    @Embedded
+    private FullAddress fullAddress;
 
     @Enumerated(EnumType.STRING)
     private  Profile profile;
