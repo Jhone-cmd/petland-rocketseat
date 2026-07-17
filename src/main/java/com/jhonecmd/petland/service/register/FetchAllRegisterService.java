@@ -7,16 +7,15 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class RegisterService {
+public class FetchAllRegisterService {
 
     private final RegisterRepository registerRepository;
 
-    public RegisterService(RegisterRepository registerRepository) {
+    public FetchAllRegisterService(RegisterRepository registerRepository) {
         this.registerRepository = registerRepository;
     }
 
-    public void save(RegisterEntity registerEntity){
-        registerRepository.save(registerEntity);
+    public List<RegisterEntity> execute() {
+        return registerRepository.findAll();
     }
-
 }

@@ -1,4 +1,4 @@
-package com.jhonecmd.petland.model;
+package com.jhonecmd.petland.model.register;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

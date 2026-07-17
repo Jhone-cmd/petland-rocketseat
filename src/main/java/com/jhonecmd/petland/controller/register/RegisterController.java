@@ -1,7 +1,8 @@
-package com.jhonecmd.petland.controller;
+package com.jhonecmd.petland.controller.register;
 
 import com.jhonecmd.petland.dto.RegisterDTO;
-import com.jhonecmd.petland.model.RegisterEntity;
+import com.jhonecmd.petland.model.register.RegisterEntity;
+import com.jhonecmd.petland.service.register.FetchAllRegisterService;
 import com.jhonecmd.petland.service.register.RegisterService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,9 +16,11 @@ public class RegisterController {
 
 
     private final RegisterService registerService;
+    private final FetchAllRegisterService fetchAllRegisterService;
 
-    public RegisterController (RegisterService registerService) {
+    public RegisterController (RegisterService registerService, FetchAllRegisterService fetchAllRegisterService) {
         this.registerService = registerService;
+        this.fetchAllRegisterService = fetchAllRegisterService;
     }
 
     @PostMapping()
@@ -31,7 +34,7 @@ public class RegisterController {
 
     @GetMapping()
     public ResponseEntity<List<RegisterEntity>> fetchAllRegisters() {
-        var registers = registerService.fetchAllRegisters();
+        var registers = fetchAllRegisterService.execute();
         return ResponseEntity.ok(registers);
     }
 }
