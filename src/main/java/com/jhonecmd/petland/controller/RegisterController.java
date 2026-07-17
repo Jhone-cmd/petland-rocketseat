@@ -2,7 +2,7 @@ package com.jhonecmd.petland.controller;
 
 import com.jhonecmd.petland.dto.RegisterDTO;
 import com.jhonecmd.petland.model.RegisterEntity;
-import com.jhonecmd.petland.service.RegisterService;
+import com.jhonecmd.petland.service.register.RegisterService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,5 +27,11 @@ public class RegisterController {
         registerService.save(registerEntity);
 
         return  ResponseEntity.status(HttpStatus.CREATED).body(registerEntity.getId());
+    }
+
+    @GetMapping()
+    public ResponseEntity<List<RegisterEntity>> fetchAllRegisters() {
+        var registers = registerService.fetchAllRegisters();
+        return ResponseEntity.ok(registers);
     }
 }

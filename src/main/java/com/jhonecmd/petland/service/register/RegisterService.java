@@ -1,4 +1,4 @@
-package com.jhonecmd.petland.service;
+package com.jhonecmd.petland.service.register;
 
 import com.jhonecmd.petland.model.RegisterEntity;
 import com.jhonecmd.petland.repository.RegisterRepository;
@@ -17,6 +17,10 @@ public class RegisterService {
 
     public void save(RegisterEntity registerEntity){
         registerRepository.save(registerEntity);
+    }
+
+    public List<RegisterEntity> fetchAllRegisters() {
+        return registerRepository.findAll();
     }
 
 }
