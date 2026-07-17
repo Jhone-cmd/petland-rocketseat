@@ -1,10 +1,12 @@
 package com.jhonecmd.petland.controller.register;
 
 import com.jhonecmd.petland.dto.RegisterDTO;
+import com.jhonecmd.petland.exceptions.RegisterAlreadyExists;
 import com.jhonecmd.petland.model.register.RegisterEntity;
 import com.jhonecmd.petland.service.register.FetchAllRegisterService;
 import com.jhonecmd.petland.service.register.RegisterService;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,10 +28,15 @@ public class RegisterController {
     @PostMapping()
     public ResponseEntity<Object> register(@RequestBody RegisterDTO registerDTO){
 
-        var registerEntity = RegisterEntity.builder().name(registerDTO.getName()).email(registerDTO.getEmail()).fullAddress(registerDTO.getFullAddress()).profile(registerDTO.getProfile()).build();
-        registerService.save(registerEntity);
+        try {
+            var registerEntity = RegisterEntity.builder().name(registerDTO.getName()).email(registerDTO.getEmail()).fullAddress(registerDTO.getFullAddress()).profile(registerDTO.getProfile()).build();
+            registerService.save(registerEntity);
 
-        return  ResponseEntity.status(HttpStatus.CREATED).body(registerEntity.getId());
+            return  ResponseEntity.status(HttpStatus.CREATED).body(registerEntity.getId());
+
+        } catch (RegisterAlreadyExists e) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
+        }
     }
 
     @GetMapping()

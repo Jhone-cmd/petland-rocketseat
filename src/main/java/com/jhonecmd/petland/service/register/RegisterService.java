@@ -1,5 +1,6 @@
 package com.jhonecmd.petland.service.register;
 
+import com.jhonecmd.petland.exceptions.RegisterAlreadyExists;
 import com.jhonecmd.petland.model.register.RegisterEntity;
 import com.jhonecmd.petland.repository.RegisterRepository;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,11 @@ public class RegisterService {
     }
 
     public void save(RegisterEntity registerEntity){
+
+        registerRepository.findByEmail(registerEntity.getEmail()).ifPresent((register) -> {
+            throw new RegisterAlreadyExists("Register Already Exists");
+        });
+
         registerRepository.save(registerEntity);
     }
 
