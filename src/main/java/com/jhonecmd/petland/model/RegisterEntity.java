@@ -1,16 +1,14 @@
 package com.jhonecmd.petland.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
 @Table(name = "register")
 @Data
-public class Register {
+public class RegisterEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(length = 50, nullable = false)
@@ -21,5 +19,6 @@ public class Register {
 
     private Address address;
 
+    @Enumerated(EnumType.STRING)
     private  Profile profile;
 }
