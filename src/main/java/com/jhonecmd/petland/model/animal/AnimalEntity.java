@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "animal")
@@ -21,7 +22,17 @@ public class AnimalEntity {
     @Column(length = 100)
     private String description;
 
+    @Enumerated(EnumType.STRING)
+    private AnimalSpecie specie;
+
     private LocalDate birthday;
 
+    @Column(name = "create_at")
+    private LocalDateTime createAt;
+
+    @PrePersist
+    protected void onCreate() {
+        this.createAt = LocalDateTime.now();
+    }
 
 }

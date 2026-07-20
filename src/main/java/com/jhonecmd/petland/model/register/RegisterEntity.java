@@ -36,7 +36,7 @@ public class RegisterEntity {
     private LocalDateTime createAt;
 
     @PrePersist
-    private void onCreate() {
+    protected void onCreate() {
         this.createAt = LocalDateTime.now();
     }
 }
