@@ -5,6 +5,7 @@ import com.jhonecmd.petland.exceptions.RegisterAlreadyExists;
 import com.jhonecmd.petland.model.register.RegisterEntity;
 import com.jhonecmd.petland.service.register.FetchAllRegisterService;
 import com.jhonecmd.petland.service.register.RegisterService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -26,7 +27,7 @@ public class RegisterController {
     }
 
     @PostMapping()
-    public ResponseEntity<Object> register(@RequestBody RegisterDTO registerDTO){
+    public ResponseEntity<Object> register(@Valid @RequestBody RegisterDTO registerDTO){
 
         try {
             var registerEntity = RegisterEntity.builder().name(registerDTO.getName()).email(registerDTO.getEmail()).fullAddress(registerDTO.getFullAddress()).profile(registerDTO.getProfile()).build();

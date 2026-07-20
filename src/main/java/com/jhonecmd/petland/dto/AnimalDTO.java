@@ -13,7 +13,7 @@ public class AnimalDTO {
 
     private String name;
     private String description;
-    private String specie;
+    private AnimalSpecie specie;
     private LocalDate birthday;
 
 }
