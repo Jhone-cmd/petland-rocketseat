@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "register")
 @Data
@@ -13,6 +15,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RegisterEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -28,4 +31,12 @@ public class RegisterEntity {
 
     @Enumerated(EnumType.STRING)
     private  Profile profile;
+
+    @Column(name = "create_at")
+    private LocalDateTime createAt;
+
+    @PrePersist
+    private void onCreate() {
+        this.createAt = LocalDateTime.now();
+    }
 }
