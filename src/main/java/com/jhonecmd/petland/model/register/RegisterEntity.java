@@ -1,5 +1,6 @@
 package com.jhonecmd.petland.model.register;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -30,7 +31,7 @@ public class RegisterEntity {
     private FullAddress fullAddress;
 
     @Enumerated(EnumType.STRING)
-    private  Profile profile;
+    private Profile profile;
 
     @Column(name = "create_at")
     private LocalDateTime createAt;
@@ -38,5 +39,6 @@ public class RegisterEntity {
     @PrePersist
     protected void onCreate() {
         this.createAt = LocalDateTime.now();
+
     }
 }

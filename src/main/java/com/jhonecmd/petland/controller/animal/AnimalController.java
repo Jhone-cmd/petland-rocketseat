@@ -38,7 +38,6 @@ public class AnimalController {
 
     @GetMapping()
     public ResponseEntity<List<AnimalEntity>> fetchAllAnimals() {
-        var animals = fetchAllAnimalService.execute();
-        return ResponseEntity.ok(animals);
+        return ResponseEntity.ok(fetchAllAnimalService.execute());
     }
 }

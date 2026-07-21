@@ -42,7 +42,6 @@ public class RegisterController {
 
     @GetMapping()
     public ResponseEntity<List<RegisterEntity>> fetchAllRegisters() {
-        var registers = fetchAllRegisterService.execute();
-        return ResponseEntity.ok(registers);
+        return ResponseEntity.ok(fetchAllRegisterService.execute());
     }
 }

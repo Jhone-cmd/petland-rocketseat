@@ -3,23 +3,25 @@ package com.jhonecmd.petland.controller.productAndservice;
 import com.jhonecmd.petland.dto.ProductAndServiceDTO;
 import com.jhonecmd.petland.exceptions.ProductAndServiceNameAlreadyExists;
 import com.jhonecmd.petland.model.productAndservice.ProductAndServiceEntity;
+import com.jhonecmd.petland.service.productAndservice.FetchAllProductAndService_Service;
 import com.jhonecmd.petland.service.productAndservice.ProductAndService_Service;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/products-services")
 public class ProductAndServiceController {
 
     private final ProductAndService_Service productAndService_Service;
+    private final FetchAllProductAndService_Service fetchAllProductAndService_Service;
 
-    public ProductAndServiceController(ProductAndService_Service productAndService_Service) {
+    public ProductAndServiceController(ProductAndService_Service productAndService_Service, FetchAllProductAndService_Service fetchAllProductAndService_Service)  {
         this.productAndService_Service = productAndService_Service;
+        this.fetchAllProductAndService_Service = fetchAllProductAndService_Service;
     }
 
     @PostMapping()
@@ -34,5 +36,10 @@ public class ProductAndServiceController {
         } catch (ProductAndServiceNameAlreadyExists ex) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
         }
+    }
+
+    @GetMapping()
+    public ResponseEntity<List<ProductAndServiceEntity>> fetchAllProductsAndServices() {
+       return ResponseEntity.ok(fetchAllProductAndService_Service.execute());
     }
 }
