@@ -1,5 +1,6 @@
-package com.jhonecmd.petland.model.productAndservice;
+package com.jhonecmd.petland.repository;
 
+import com.jhonecmd.petland.model.productAndservice.ProductAndServiceEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
