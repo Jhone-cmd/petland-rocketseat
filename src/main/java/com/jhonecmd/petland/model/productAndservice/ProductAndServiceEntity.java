@@ -31,6 +31,12 @@ public class ProductAndServiceEntity {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
+    public ProductAndServiceEntity(String name, Double price, Boolean service) {
+        this.name = name;
+        this.price = price;
+        this.service = service;
+    }
+
     @PrePersist
     protected void onCreate() {
         LocalDateTime now = LocalDateTime.now();

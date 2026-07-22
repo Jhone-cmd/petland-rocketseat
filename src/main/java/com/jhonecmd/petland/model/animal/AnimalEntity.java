@@ -36,6 +36,13 @@ public class AnimalEntity {
     @Column(name = "create_at")
     private LocalDateTime createAt;
 
+    public AnimalEntity(String name, String description, AnimalSpecie specie, LocalDate birthday) {
+        this.name = name;
+        this.description = description;
+        this.specie = specie;
+        this.birthday = birthday;
+    }
+
     @PrePersist
     protected void onCreate() {
         this.createAt = LocalDateTime.now();

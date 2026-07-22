@@ -36,6 +36,13 @@ public class RegisterEntity {
     @Column(name = "create_at")
     private LocalDateTime createAt;
 
+    public RegisterEntity(String name, String email, FullAddress fullAddress, Profile profile) {
+        this.name = name;
+        this.email = email;
+        this.fullAddress = fullAddress;
+        this.profile = profile;
+    }
+
     @PrePersist
     protected void onCreate() {
         this.createAt = LocalDateTime.now();
