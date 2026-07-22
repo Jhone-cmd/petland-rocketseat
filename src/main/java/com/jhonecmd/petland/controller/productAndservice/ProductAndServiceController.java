@@ -5,6 +5,7 @@ import com.jhonecmd.petland.exceptions.ProductAndServiceNameAlreadyExists;
 import com.jhonecmd.petland.model.productAndservice.ProductAndServiceEntity;
 import com.jhonecmd.petland.service.productAndservice.FetchAllProductAndService_Service;
 import com.jhonecmd.petland.service.productAndservice.ProductAndService_Service;
+import com.jhonecmd.petland.service.productAndservice.UpdateProductAndService_Service;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -20,6 +21,7 @@ public class ProductAndServiceController {
 
     private final ProductAndService_Service productAndService_Service;
     private final FetchAllProductAndService_Service fetchAllProductAndService_Service;
+    private final UpdateProductAndService_Service updateProductAndService_service;
 
     @PostMapping()
     public ResponseEntity<Object> addProductOrService(@Valid @RequestBody ProductAndServiceDTO productAndServiceDTO) {
@@ -38,5 +40,18 @@ public class ProductAndServiceController {
     @GetMapping()
     public ResponseEntity<List<ProductAndServiceEntity>> fetchAllProductsAndServices() {
        return ResponseEntity.ok(fetchAllProductAndService_Service.execute());
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Object> updateProductOrService(@PathVariable Integer id, @RequestBody ProductAndServiceDTO productAndServiceDTO) {
+
+        try {
+
+            var entity = updateProductAndService_service.execute(id, productAndServiceDTO);
+            return  ResponseEntity.status(HttpStatus.OK).body(entity.getId());
+
+        } catch (ProductAndServiceNameAlreadyExists ex) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+        }
     }
 }
