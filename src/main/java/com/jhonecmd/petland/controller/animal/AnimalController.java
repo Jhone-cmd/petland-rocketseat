@@ -6,6 +6,7 @@ import com.jhonecmd.petland.model.register.RegisterEntity;
 import com.jhonecmd.petland.service.animal.AnimalService;
 import com.jhonecmd.petland.service.animal.FetchAllAnimalService;
 import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,15 +15,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/animals")
+@AllArgsConstructor
 public class AnimalController {
 
     private final AnimalService animalService;
     private  final FetchAllAnimalService fetchAllAnimalService;
-
-    public AnimalController(AnimalService animalService, FetchAllAnimalService fetchAllAnimalService) {
-        this.animalService = animalService;
-        this.fetchAllAnimalService = fetchAllAnimalService;
-    }
 
     @PostMapping()
     public ResponseEntity<Object> createAnimal(@Valid @RequestBody AnimalDTO animalDTO) {

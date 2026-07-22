@@ -6,6 +6,7 @@ import com.jhonecmd.petland.model.register.RegisterEntity;
 import com.jhonecmd.petland.service.register.FetchAllRegisterService;
 import com.jhonecmd.petland.service.register.RegisterService;
 import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -15,16 +16,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/register")
+@AllArgsConstructor
 public class RegisterController {
-
 
     private final RegisterService registerService;
     private final FetchAllRegisterService fetchAllRegisterService;
-
-    public RegisterController (RegisterService registerService, FetchAllRegisterService fetchAllRegisterService) {
-        this.registerService = registerService;
-        this.fetchAllRegisterService = fetchAllRegisterService;
-    }
 
     @PostMapping()
     public ResponseEntity<Object> register(@Valid @RequestBody RegisterDTO registerDTO){

@@ -6,6 +6,7 @@ import com.jhonecmd.petland.model.productAndservice.ProductAndServiceEntity;
 import com.jhonecmd.petland.service.productAndservice.FetchAllProductAndService_Service;
 import com.jhonecmd.petland.service.productAndservice.ProductAndService_Service;
 import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,15 +15,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/products-services")
+@AllArgsConstructor
 public class ProductAndServiceController {
 
     private final ProductAndService_Service productAndService_Service;
     private final FetchAllProductAndService_Service fetchAllProductAndService_Service;
-
-    public ProductAndServiceController(ProductAndService_Service productAndService_Service, FetchAllProductAndService_Service fetchAllProductAndService_Service)  {
-        this.productAndService_Service = productAndService_Service;
-        this.fetchAllProductAndService_Service = fetchAllProductAndService_Service;
-    }
 
     @PostMapping()
     public ResponseEntity<Object> addProductOrService(@Valid @RequestBody ProductAndServiceDTO productAndServiceDTO) {
