@@ -17,5 +17,6 @@ public class DeleteAnimalService {
         AnimalEntity entity = animalRepository.findById(id).orElseThrow(() -> new ResourceNotFound("Animal Not Found!"));
         animalRepository.deleteById(entity.getId());
         return;
+
     }
 }
