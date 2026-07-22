@@ -33,14 +33,18 @@ public class AnimalEntity {
 
     private LocalDate birthday;
 
+    @Column(name = "tutor_id", nullable = false)
+    private Integer tutor;
+
     @Column(name = "create_at")
     private LocalDateTime createAt;
 
-    public AnimalEntity(String name, String description, AnimalSpecie specie, LocalDate birthday) {
+    public AnimalEntity(String name, String description, AnimalSpecie specie, LocalDate birthday, Integer tutor) {
         this.name = name;
         this.description = description;
         this.specie = specie;
         this.birthday = birthday;
+        this.tutor = tutor;
     }
 
     @PrePersist

@@ -47,21 +47,24 @@ public class SeedsRunner {
                     "Bob",
                     "Cachorro da Raça Labrador.",
                     AnimalSpecie.DOG,
-                    LocalDate.of(2026, 1, 2)
+                    LocalDate.of(2026, 1, 2),
+                    register1.getId()
             );
 
             AnimalEntity animal2 = new AnimalEntity(
                     "Belinha",
                     "Gata mansa.",
                     AnimalSpecie.CAT,
-                    LocalDate.of(2024, 6, 24)
+                    LocalDate.of(2024, 6, 24),
+                    register1.getId()
             );
 
             AnimalEntity animal3 = new AnimalEntity(
                     "Red",
                     "Pássaro Sabiá",
                     AnimalSpecie.BIRDS,
-                    LocalDate.of(2023, 5, 3)
+                    LocalDate.of(2023, 5, 3),
+                    register1.getId()
             );
 
             animalRepository.saveAll(List.of(animal1, animal2, animal3));

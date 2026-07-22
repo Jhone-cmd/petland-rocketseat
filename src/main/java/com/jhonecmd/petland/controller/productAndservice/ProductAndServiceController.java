@@ -2,6 +2,7 @@ package com.jhonecmd.petland.controller.productAndservice;
 
 import com.jhonecmd.petland.dto.ProductAndServiceDTO;
 import com.jhonecmd.petland.exceptions.ProductAndServiceNameAlreadyExists;
+import com.jhonecmd.petland.exceptions.ResourceNotFound;
 import com.jhonecmd.petland.model.productAndservice.ProductAndServiceEntity;
 import com.jhonecmd.petland.service.productAndservice.DeleteProductAndService_Service;
 import com.jhonecmd.petland.service.productAndservice.FetchAllProductAndService_Service;
@@ -52,7 +53,7 @@ public class ProductAndServiceController {
             var entity = updateProductAndService_service.execute(id, productAndServiceDTO);
             return  ResponseEntity.status(HttpStatus.OK).body(entity.getId());
 
-        } catch (ProductAndServiceNameAlreadyExists ex) {
+        } catch (ResourceNotFound ex) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
         }
     }
@@ -65,7 +66,7 @@ public class ProductAndServiceController {
             deleteProductAndService_Service.execute(id);
             return  ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
 
-        } catch (ProductAndServiceNameAlreadyExists ex) {
+        } catch (ResourceNotFound ex) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
         }
     }
