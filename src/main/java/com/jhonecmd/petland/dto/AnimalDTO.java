@@ -1,13 +1,10 @@
 package com.jhonecmd.petland.dto;
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.jhonecmd.petland.model.animal.AnimalSpecie;
-import jakarta.persistence.Column;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import lombok.Data;
-
 import java.time.LocalDate;
+
+import com.jhonecmd.petland.model.animal.AnimalSpecie;
+
+import lombok.Data;
 
 @Data
 public class AnimalDTO {
