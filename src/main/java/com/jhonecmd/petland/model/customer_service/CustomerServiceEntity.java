@@ -27,7 +27,10 @@ public class CustomerServiceEntity {
     private Double price;
     private Boolean emergency;
 
+    @Enumerated(EnumType.STRING)
     private CustomerServiceStatus status;
+
+    @Enumerated(EnumType.STRING)
     private  CustomerServiceType type;
 
     @Column(name = "client_id", nullable = false)

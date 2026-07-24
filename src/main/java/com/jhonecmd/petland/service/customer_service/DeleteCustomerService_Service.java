@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class DeleteCustomerService_Service {
 
-    private CustomerServiceRepository customerServiceRepository;
+    private final CustomerServiceRepository customerServiceRepository;
 
     public void execute(Integer id) {
         CustomerServiceEntity entity = customerServiceRepository.findById(id).orElseThrow(() -> new ResourceNotFound("Customer Service Not Found!"));

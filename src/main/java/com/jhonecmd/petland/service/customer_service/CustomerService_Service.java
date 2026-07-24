@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class CustomerService_Service {
 
-    private CustomerServiceRepository customerServiceRepository;
+    private final CustomerServiceRepository customerServiceRepository;
 
     public void save(CustomerServiceEntity customerServiceEntity) {
         customerServiceRepository.save(customerServiceEntity);

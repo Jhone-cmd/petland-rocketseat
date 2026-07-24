@@ -1,5 +1,6 @@
 package com.jhonecmd.petland.service.customer_service;
 
+import com.jhonecmd.petland.dto.CustomerServiceDTO;
 import com.jhonecmd.petland.dto.ProductAndServiceDTO;
 import com.jhonecmd.petland.exceptions.ResourceNotFound;
 import com.jhonecmd.petland.model.customer_service.CustomerServiceEntity;
@@ -13,10 +14,10 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class UpdateCustomerService_Service {
 
-    private CustomerServiceRepository customerServiceRepository;
+    private final CustomerServiceRepository customerServiceRepository;
     private final ObjectMapperEntity objectMapperEntity;
 
-    public CustomerServiceEntity execute(Integer id, ProductAndServiceDTO request) {
+    public CustomerServiceEntity execute(Integer id, CustomerServiceDTO request) {
         CustomerServiceEntity entity = customerServiceRepository.findById(id).orElseThrow(() -> new ResourceNotFound("Customer Service Not Found!"));
         objectMapperEntity.copyNonNullProperties(request, entity);
         return customerServiceRepository.save(entity);

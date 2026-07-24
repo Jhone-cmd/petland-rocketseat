@@ -11,7 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 public class FetchAllCustomerService_Service {
 
-    private CustomerServiceRepository customerServiceRepository;
+    private final CustomerServiceRepository customerServiceRepository;
 
     public List<CustomerServiceEntity> execute() {
         return customerServiceRepository.findAll();
