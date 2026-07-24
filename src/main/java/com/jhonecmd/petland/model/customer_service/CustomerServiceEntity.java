@@ -42,4 +42,19 @@ public class CustomerServiceEntity {
     @Column(name = "service_id", nullable = false)
     private Integer service;
 
+    public CustomerServiceEntity(String description, LocalDate date, LocalTime time,
+                                 Double price, Boolean emergency, CustomerServiceStatus status, CustomerServiceType type,
+                                 Integer client, Integer animal, Integer service) {
+        this.description = description;
+        this.date = date;
+        this.time = time;
+        this.price = price;
+        this.emergency = emergency;
+        this.status = status;
+        this.type = type;
+        this.client = client;
+        this.animal = animal;
+        this.service = service;
+
+    }
 }
