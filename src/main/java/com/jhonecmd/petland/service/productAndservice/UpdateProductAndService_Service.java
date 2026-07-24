@@ -19,7 +19,6 @@ public class UpdateProductAndService_Service {
     private final ObjectMapperEntity objectMapperEntity;
 
     public ProductAndServiceEntity execute(Integer id, ProductAndServiceDTO request) {
-
        ProductAndServiceEntity entity = productAndServiceRepository.findById(id).orElseThrow(() -> new ResourceNotFound("Product Or Service Not Found!"));
        objectMapperEntity.copyNonNullProperties(request, entity);
        return productAndServiceRepository.save(entity);

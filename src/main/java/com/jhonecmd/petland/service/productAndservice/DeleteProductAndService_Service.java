@@ -15,7 +15,6 @@ public class DeleteProductAndService_Service {
     private final ProductAndServiceRepository productAndServiceRepository;
 
     public void execute(Integer id) {
-
         ProductAndServiceEntity entity = productAndServiceRepository.findById(id).orElseThrow(() -> new ResourceNotFound("Product Or Service Not Found!"));
         productAndServiceRepository.deleteById(entity.getId());
         return;

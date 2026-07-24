@@ -13,7 +13,6 @@ public class AnimalService {
 
     public void save(AnimalEntity animalEntity) {
         animalRepository.save(animalEntity);
-
         return;
    }
 }

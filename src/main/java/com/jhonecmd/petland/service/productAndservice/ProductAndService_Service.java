@@ -15,7 +15,7 @@ public class ProductAndService_Service {
 
     public void save(ProductAndServiceEntity productAndServiceEntity) {
         productAndServiceRepository.findByName(productAndServiceEntity.getName()).ifPresent((productAndServiceName) -> {
-            throw  new ProductAndServiceNameAlreadyExists("The Product or Service already Exists!");
+            throw new ProductAndServiceNameAlreadyExists("The Product or Service already Exists!");
         });
 
         productAndServiceRepository.save(productAndServiceEntity);
