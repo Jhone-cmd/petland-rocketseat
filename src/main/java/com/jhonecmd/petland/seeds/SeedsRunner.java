@@ -61,7 +61,7 @@ public class SeedsRunner {
 
             AnimalEntity animal3 = new AnimalEntity(
                     "Red",
-                    "Pássaro Sabiá",
+                    "Pássaro Sabiá.",
                     AnimalSpecie.BIRDS,
                     LocalDate.of(2023, 5, 3),
                     register1.getId()
