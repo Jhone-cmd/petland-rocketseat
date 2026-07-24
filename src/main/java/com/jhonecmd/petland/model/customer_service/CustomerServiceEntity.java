@@ -15,7 +15,7 @@ import java.time.LocalTime;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class CustomerService {
+public class CustomerServiceEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,5 +26,17 @@ public class CustomerService {
     private LocalTime time;
     private Double price;
     private Boolean emergency;
+
+    private CustomerServiceStatus status;
+    private  CustomerServiceType type;
+
+    @Column(name = "client_id", nullable = false)
+    private Integer client;
+
+    @Column(name = "animal_id", nullable = false)
+    private Integer animal;
+
+    @Column(name = "service_id", nullable = false)
+    private Integer service;
 
 }
